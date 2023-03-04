@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US" data-theme="dark">
+  <head>
+    <title>DvM: DesktopView 4 Mobile</title>
+    <meta charset="utf-8">
+    <meta name="description" content="DvM (aka DesktopView 4 Mobile) allows mobile users to see how their app/website will look and behave on a desktop without having to own or touch one.">
+    <meta name="author" content="Michael Schwartz">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="DvM">
+    <meta name="apple-mobile-web-app-title" content="DvM: DesktopView 4 Mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="hsl(207, 31%, 11%)">
+    <meta name="msapplication-navbutton-color" content="hsl(207, 31%, 11%)">
+    <meta name="msapplication-starturl" content="./index.html">
+    <link rel="apple-touch-icon" href="imgs/logo.png">
+    <link rel="icon" href="imgs/logo.png" type="image/x-icon" />
+    <meta property="og:url"         content="https://michaelsboost.com/DvM/" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="DvM: DesktopView 4 Mobile" />
+    <meta property="og:description" content="DvM (aka DesktopView 4 Mobile) allows mobile users to see how their app/website will look and behave on a desktop without having to own or touch one." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+<!-- top navbar -->
+<nav class="fixed inset-x-0 pt-0 pl-3 pr-2 z-10">
+  <ul class="h-auto justify-evenly w-full overflow-auto">
+    <li>
+      <button
+        data-zoom="true"
+        class="py-0 my-0 border-none bg-transparent text-current"
+      >
+        <i class="fa fa-light fa-magnifying-glass-plus"></i>
+      </button>
+    </li>
+    <li>
+      <button
+        onclick="search.onkeyup()"
+        class="py-0 my-0 border-none bg-transparent text-current"
+      >
+        <i class="fa fa-rotate"></i>
+      </button>
+    </li>
+    <li>
+      <button
+        id="rotate"
+        class="py-0 my-0 border-none bg-transparent text-current"
+      >
+        <i class="fa fa fa-rotate-right"></i>
+      </button>
+    </li>
+    <li>
+      <button
+        data-device="mobile"
+        class="py-0 my-0 border-none bg-transparent text-current"
+      >
+        <i class="fa fa-mobile"></i>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<!-- preview application here -->
+<div class="absolute inset-0">
+  <div
+    id="previewElm"
+    data-canvas
+    class="border border-solid"
+    style="width: 360px; height: 740px;"
+  >
+    <iframe
+      id="preview"
+      src="https://michaelsboost.com/"
+      frameborder="0"
+      class="absolute inset-0 w-full h-full"
+    ></iframe>
+  </div>
+  <div id="fill" class="absolute inset-0"></div>
+</div>
+
+<!-- bottom url bar -->
+<nav class="fixed inset-x-0 bottom-0 pt-0 px-3 z-10">
+  <input
+    id="search"
+    type="search"
+    placeholder="url goes here..."
+    value="https://michaelsboost.com/"
+    onfocus="search.select(true)"
+    onkeyup="preview.src = search.value"
+  />
+</nav>
+  
+    <script src="js/bundle.js"></script>
+      <script>
+        // service worker for progressive web app
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js');
+          });
+        }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+"name": "dvm",
+"version": "0.1",
+"description": "DvM (aka DesktopView 4 Mobile) allows mobile users to see how their app/website will look and behave on a desktop without having to own or touch one.",
+"main": "index.js",
+"scripts": {
+  "serve": "http-server -p 1336 build -c-1"
+},
+"author": "Michael Schwartz",
+"license": "MIT"
+}
