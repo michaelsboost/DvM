@@ -25,75 +25,97 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-<!-- top navbar -->
-<nav class="fixed inset-x-0 pt-0 pl-3 pr-2 z-10">
-  <ul class="h-auto justify-evenly w-full overflow-auto">
-    <li>
-      <button
-        data-zoom="true"
-        class="py-0 my-0 border-none bg-transparent text-current"
-      >
-        <i class="fa fa-light fa-magnifying-glass-plus"></i>
-      </button>
-    </li>
-    <li>
-      <button
-        onclick="search.onkeyup()"
-        class="py-0 my-0 border-none bg-transparent text-current"
-      >
-        <i class="fa fa-rotate"></i>
-      </button>
-    </li>
-    <li>
-      <button
-        id="rotate"
-        class="py-0 my-0 border-none bg-transparent text-current"
-      >
-        <i class="fa fa fa-rotate-right"></i>
-      </button>
-    </li>
-    <li>
-      <button
-        data-device="mobile"
-        class="py-0 my-0 border-none bg-transparent text-current"
-      >
-        <i class="fa fa-mobile"></i>
-      </button>
-    </li>
-  </ul>
-</nav>
-
-<!-- preview application here -->
-<div class="absolute inset-0">
-  <div
-    id="previewElm"
-    data-canvas
-    class="border border-solid"
-    style="width: 360px; height: 740px;"
-  >
-    <iframe
-      id="preview"
-      src="https://michaelsboost.com/"
-      frameborder="0"
-      class="absolute inset-0 w-full h-full"
-    ></iframe>
-  </div>
-  <div id="fill" class="absolute inset-0"></div>
-</div>
-
-<!-- bottom url bar -->
-<nav class="fixed inset-x-0 bottom-0 pt-0 px-3 z-10">
-  <input
-    id="search"
-    type="search"
-    placeholder="url goes here..."
-    value="https://michaelsboost.com/"
-    onfocus="search.select(true)"
-    onkeyup="preview.src = search.value"
-  />
-</nav>
+    <!-- top navbar -->
+    <div class="relative flex flex-col h-screen">
+      <nav class="fixed inset-x-0 pt-0 pl-3 pr-2 z-10">
+        <ul class="h-auto justify-evenly w-full overflow-auto">
+          <li>
+            <button
+              data-zoom="true"
+              class="py-0 my-0 border-none bg-transparent text-current">
+              <i class="fa fa-light fa-magnifying-glass-plus"></i>
+            </button>
+          </li>
+          <li>
+            <button 
+              id="mobilep" 
+              class="py-0 my-0 border-none bg-transparent text-current"
+              name="mobile portrait preset size">
+              <i class="fa fa-mobile"></i>
+            </button>
+          </li>
+          <li>
+            <button 
+              id="tabletp" 
+              class="py-0 my-0 border-none bg-transparent text-current"
+              name="tablet portrait preset size">
+              <i class="fa fa-tablet"></i>
+            </button>
+          </li>
+          <li>
+            <button 
+              id="mobilel" 
+              class="py-0 my-0 border-none bg-transparent text-current"
+              name="mobile landscape preset size">
+              <i class="fa fa-mobile transform -rotate-90"></i>
+            </button>
+          </li>
+          <li>
+            <button 
+              id="tabletl" 
+              class="py-0 my-0 border-none bg-transparent text-current"
+              name="tablet landscape preset size">
+              <i class="fa fa-tablet transform -rotate-90"></i>
+            </button>
+          </li>
+          <li>
+            <button 
+              id="desktopsize" 
+              class="py-0 my-0 border-none bg-transparent text-current"
+              name="mobile portrait preset size">
+              <i class="fa fa-desktop"></i>
+            </button>
+          </li>
+          <li>
+            <button 
+              id="toggletheme" 
+              class="py-0 my-0 border-none bg-transparent text-current"
+              name="toggle theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    
+      <!-- canvas container -->
+      <div id="canvasContainer" class="relative flex-grow bg-repeat overflow-hidden" style="background-image: url('imgs/bg.svg');">
   
-    <script src="js/bundle.js"></script>
+        <!-- preview site here -->
+        <div class="absolute inset-0">
+          <div id="previewElm" data-canvas class="border border-solid bg-white" style="width: 360px; height: 740px;">
+            <iframe
+              id="preview"
+              src="https://michaelsboost.com/"
+              frameborder="0"
+              class="absolute inset-0 w-full h-full"
+            ></iframe>
+          </div>
+          <div id="fill" class="absolute inset-0 
+            "></div>
+        </div>
+      </div>
+      
+      <!-- navbar -->
+      <nav class="absolute bottom-0 inset-x-0 p-4 text-center block overflow-auto">
+          <input
+            id="search"
+            type="search"
+            placeholder="url goes here..."
+          />
+      </nav>
+    </div>
+  
+    <script src="js/app.js"></script>
       <script>
         // service worker for progressive web app
         if ('serviceWorker' in navigator) {

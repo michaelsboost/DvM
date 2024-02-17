@@ -6,7 +6,7 @@ DvM (aka DesktopView 4 Mobile) allows mobile users to see how their app/website 
 Version
 -------------
 
-0.1
+0.2
 
 License
 -------------

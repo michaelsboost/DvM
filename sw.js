@@ -7,7 +7,7 @@ let filesToCache = [
   "./imgs/logo.png",
   "./index.html",
   "./css/style.css",
-  "./js/bundle.js",
+  "./js/app.js",
   "./libraries/font-awesome/css/all.css",
   "./libraries/font-awesome/css/all.min.css",
   "./libraries/font-awesome/css/brands.css",
