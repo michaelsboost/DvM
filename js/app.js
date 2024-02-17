@@ -1,12 +1,8 @@
-let project = {
-  dark: true,
-  url: "https://michaelsboost.com/"
-};
-
+let project;
 const app = {
   // Function to update localStorage with current project data
   updateLocalStorage: () => {
-    localStorage.setItem('project', JSON.stringify(project));
+    localStorage.setItem('DvM', JSON.stringify(project));
   },
 
   // Function to apply changes to the HTML based on project settings
@@ -230,6 +226,21 @@ const app = {
   init: () => {
     // init panzoom library
     app.importJS('./libraries/panzoom/panzoom.mod.js');
+    
+    if (!localStorage.getItem('DvM')) {
+      // project json
+      project = {
+        dark: true,
+        url: "https://michaelsboost.com/"
+      };
+    } else {
+      project = JSON.parse(localStorage.getItem('DvM'));
+      
+      // Update settings
+      toggletheme.innerHTML = project.dark ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+      project.url = search.value;
+      project.url = preview.src;
+    }
     
     // Apply changes to the HTML based on stored project settings
     app.applyChanges();
